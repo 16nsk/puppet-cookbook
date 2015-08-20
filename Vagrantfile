@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "ubuntu/trusty64"
+  config.vm.box = "debian/wheezy64"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -50,7 +50,7 @@ Vagrant.configure(2) do |config|
   #   # Customize the amount of memory on the VM:
     vb.memory = "512"
     vb.cpus = 1
-    vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
+    vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"] # change this, but I am 99.99% sure that this is applied to cheap vps boxes as well ;)
   end
   #
   # View the documentation for the provider you are using for more
@@ -70,5 +70,6 @@ Vagrant.configure(2) do |config|
   #   sudo apt-get update
   #   sudo apt-get install -y apache2
   # SHELL
-  config.vm.provision "puppet", manifests_path: "provision/puppet/manifests", module_path: "provision/puppet/modules"
+  config.vm.provision "shell", path: "provision/first-time-init.sh"
+  # config.vm.provision "puppet", manifests_path: "provision/puppet/manifests", module_path: "provision/puppet/modules"
 end
