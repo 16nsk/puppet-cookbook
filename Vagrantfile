@@ -71,5 +71,5 @@ Vagrant.configure(2) do |config|
   #   sudo apt-get install -y apache2
   # SHELL
   config.vm.provision "shell", path: "provision/first-time-init.sh"
-  # config.vm.provision "puppet", manifests_path: "provision/puppet/manifests", module_path: "provision/puppet/modules"
+  config.vm.provision "puppet", manifests_path: "provision/puppet/manifests", module_path: "provision/puppet/modules"
 end

@@ -8,6 +8,9 @@ then
   dpkg -i /tmp/puppetlabs-release-wheezy.deb
 
   apt-get update
+  apt-get upgrade -y
   apt-get install -y puppet
+
+  touch /root/.initial-provision
 
 fi
