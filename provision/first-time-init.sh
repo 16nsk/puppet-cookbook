@@ -1,4 +1,5 @@
-#!bin/bash
+#!/usr/bin/env bash
+export DEBIAN_FRONTEND=noninteractive
 
 if [ ! -f /root/.initial-provision ]
 then
