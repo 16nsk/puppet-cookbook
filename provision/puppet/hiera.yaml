@@ -1,0 +1,5 @@
+---
+:hierarchy:
+  - "common"
+:yaml:
+  :datadir: '/vagrant/provision/puppet/hieradata'

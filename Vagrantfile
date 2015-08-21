@@ -14,14 +14,22 @@ Vagrant.configure(2) do |config|
     vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"] # change this, but I am 99.99% sure that this is applied to cheap vps boxes as well ;)
   end
 
+  ## this will make sure that all instances are updated and have puppet 3.x on any provisioning
+  config.vm.provision "shell", path: "provision/init.sh"
+  config.vm.provision "puppet" do |puppet|
+    puppet.hiera_config_path = "provision/puppet/hiera.yaml"
+    puppet.working_directory = "/tmp/vagrant-puppet"
+    puppet.manifests_path = "provision/puppet/manifests"
+    puppet.module_path = "provision/puppet/modules"
+  end
+
   config.vm.define "master" do |master|
+    master.vm.network "private_network", ip: "172.28.128.3"
     master.vm.provision "puppet", manifests_path: "provision/master/manifests", module_path: "provision/master/modules"
   end
 
   config.vm.define "node1" do |node1|
+    node1.vm.network "private_network", ip: "172.28.128.4"
     node1.vm.provision "puppet", manifests_path: "provision/nodes/manifests", module_path: "provision/nodes/modules"
   end
-
-  ## this will make sure that all instances are updated and have puppet 3.x on any provisioning
-  config.vm.provision "shell", path: "provision/init.sh"
 end

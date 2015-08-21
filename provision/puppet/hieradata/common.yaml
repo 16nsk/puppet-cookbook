@@ -1,0 +1,8 @@
+---
+hosts::host_entries:
+  'master.example.com':
+    ip: '172.28.128.3'
+    host_aliases:
+      - 'git.example.com'
+  'node1.example.com':
+    ip: '172.28.128.4'

@@ -1,0 +1,6 @@
+[submodule "provision/puppet/modules/ghoneycutt-hosts"]
+	path = provision/puppet/modules/ghoneycutt-hosts
+	url = git@github.com:ghoneycutt/puppet-module-hosts.git
+[submodule "provision/puppet/modules/puppetlabs-stdlib"]
+	path = provision/puppet/modules/puppetlabs-stdlib
+	url = git@github.com:puppetlabs/puppetlabs-stdlib.git
